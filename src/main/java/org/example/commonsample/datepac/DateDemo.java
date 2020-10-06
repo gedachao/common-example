@@ -14,16 +14,59 @@ import java.util.Date;
  * @Version 1.0
  */
 public class DateDemo {
-    final static FastDateFormat FAST_DATE_FORMAT = FastDateFormat.getInstance("yyyy-MM-dd HH:mm:ss");
+    public static final String DateStyle = "yyyy-MM-dd HH:mm:ss";
+    final static FastDateFormat FAST_DATE_FORMAT = FastDateFormat.getInstance(DateStyle);
+
     @Test
     public void test1() throws ParseException {
         Date date = new Date();
-        System.out.println("原格式："+date);
+        System.out.println("原格式：" + date);
         String format_date = FAST_DATE_FORMAT.format(date);
-        System.out.println("format_date:"+format_date);
+        System.out.println("format_date:" + format_date);
 
         Date date_from_parse = FAST_DATE_FORMAT.parse(format_date);
         System.out.println(date_from_parse);
+
+    }
+
+    @Test
+    public void test2() throws InterruptedException {
+        Date date1 = new Date();
+        Thread.sleep(2000);
+        Date date2 = new Date();
+
+        long date1Time = date1.getTime();
+        Date date = new Date(date1Time);
+        System.out.println(date1Time);
+        System.out.println("date1------------>" + date1);
+        System.out.println("date------------>" + date);
+    }
+
+    /**
+     * var = time1-time2;
+     * var/1000/60/60/24=1;
+     * 即var是time1和time2相差的毫秒值
+     *
+     * @throws ParseException
+     */
+    @Test
+    public void test5() throws ParseException {
+        String str1 = "2020-10-06 08:55:53";
+        String str2 = "2020-10-07 08:55:53";
+        Date date1 = FAST_DATE_FORMAT.parse(str1);
+        Date date2 = FAST_DATE_FORMAT.parse(str2);
+        long time1 = date1.getTime();
+        long time2 = date2.getTime();
+        System.out.println("time1---->" + time1);
+        System.out.println("time2---->" + time2);
+        long var = time1 - time2;
+        System.out.println("time1-time2---->" + var);
+
+
+    }
+
+    @Test
+    public void test6() {
 
 
     }
