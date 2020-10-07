@@ -3,10 +3,8 @@ package org.example.commonsample.jdk8;
 import org.example.commonsample.domain.Employee;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -61,7 +59,7 @@ public class StreamMine {
     }
 
     /**
-     * 中间操作
+     * 中间操作1
      */
     @Test
     public void test2() {
@@ -97,8 +95,19 @@ public class StreamMine {
                     return e1.getSalary() > e2.getSalary() ? 1 : -1;
                 })
                 .forEach(System.out::println);
+        System.out.println("map ----------------> 获取员工姓名");
+        list.stream()
+                .map(employee -> employee.getName())
+                .forEach(System.out::println);
+        System.out.println("map ----------------> 采用多线程");
+        list.parallelStream()
+                .map(employee -> employee.getName())
+                .forEach(System.out::println);
     }
 
+    /**
+     * 终止操作 foreach min max count,reduce,collect
+     */
     @Test
     public void test3() {
         Employee liu = new Employee("小刘", 25000);
@@ -109,6 +118,16 @@ public class StreamMine {
         list.add(new Employee("小孙", 20000));
         list.add(liu);
         list.add(liu);
+        System.out.println("min -----------> 获取最小");
+        Optional<Employee> min = list.stream()
+                .min((e1, e2) -> e1.getSalary() > e2.getSalary() ? 1 : -1);
+        System.out.println(min.get());
+        System.out.println("collect --------> 获取name 集合");
+        List<String> nameList = list.stream()
+                .map(employee -> employee.getName())
+                .collect(Collectors.toList());
+        System.out.println(nameList);
+
 
     }
 
