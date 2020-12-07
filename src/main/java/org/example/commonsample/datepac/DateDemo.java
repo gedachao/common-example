@@ -1,10 +1,15 @@
 package org.example.commonsample.datepac;
 
 import org.apache.commons.lang3.time.FastDateFormat;
+import org.example.commonsample.domain.Dog;
 import org.junit.Test;
 
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -51,10 +56,12 @@ public class DateDemo {
      */
     @Test
     public void test5() throws ParseException {
-        String str1 = "2020-10-06 08:55:53";
+        String str1 = "2020-10-06";
         String str2 = "2020-10-07 08:55:53";
         Date date1 = FAST_DATE_FORMAT.parse(str1);
         Date date2 = FAST_DATE_FORMAT.parse(str2);
+        System.out.println(date1);
+        System.out.println(date2);
         long time1 = date1.getTime();
         long time2 = date2.getTime();
         System.out.println("time1---->" + time1);
@@ -67,8 +74,33 @@ public class DateDemo {
 
     @Test
     public void test6() {
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("cat", "lihua");
+        System.out.println(hashMap.get("hell"));
 
+    }
 
+    @Test
+    public void test7() {
+        Dog dog = new Dog();
+        dog.setName("pappy");
+        Dog dog1 = new Dog();
+        dog1.setName("happy");
+        List<Dog> dogs = Arrays.asList(dog, dog1);
+        dogs.stream().forEach((item) -> item.setAddress("wuxi"));
+        for (Dog dog2 : dogs) {
+            System.out.println(dog2.getAddress());
+
+        }
+    }
+
+    @Test
+    public void test8() {
+        Doffine doffine = new Doffine();
+        doffine.setName("jdc");
+        List<String> list = doffine.getList();
+        List<String> collect = list.stream().filter((item) -> item.length() > 2).collect(Collectors.toList());
+        System.out.println(collect);
     }
 
 
