@@ -1,6 +1,6 @@
-package org.example.commonsample.proxy.factory;
+package org.example.commonsample.proxy.proxy1.factory;
 
-import org.example.commonsample.proxy.UsbSell;
+import org.example.commonsample.proxy.proxy1.UsbSell;
 
 /**
  * @Description: UsbKingFactory 目标类

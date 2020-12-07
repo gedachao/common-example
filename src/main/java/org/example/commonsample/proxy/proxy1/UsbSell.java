@@ -1,4 +1,4 @@
-package org.example.commonsample.proxy;
+package org.example.commonsample.proxy.proxy1;
 
 /**
  * @Description: UsbSell

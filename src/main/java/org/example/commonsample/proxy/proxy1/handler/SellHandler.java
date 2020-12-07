@@ -1,4 +1,4 @@
-package org.example.commonsample.proxy.handler;
+package org.example.commonsample.proxy.proxy1.handler;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
